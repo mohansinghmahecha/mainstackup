@@ -1,13 +1,13 @@
 // -----------------------------------------------------------------------------
-// ⚠️ IMPORTANT: Before using these components, please install lucide-react.
-// Run this command in your terminal:
-// npm install lucide-react
+// ⚠️ IMPORTANT: Before using these components, please install:
+// npm install lucide-react framer-motion
 // -----------------------------------------------------------------------------
 "use client"
 import React, { useState } from 'react';
 import { Rocket, BarChart, Code, Smartphone, ChevronDown, MessageCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
 
-// Fallback component in case icons fail to load (e.g., lucide-react is not installed)
+// Fallback component in case icons fail to load
 const PlaceholderIcon = () => (
   <div 
     className="w-10 h-10 bg-gray-700 rounded-lg animate-pulse" 
@@ -15,14 +15,12 @@ const PlaceholderIcon = () => (
   ></div>
 );
 
-
 // -----------------------------------------------------------------------------
-// OUR SERVICES COMPONENT
+// OUR SERVICES COMPONENT (WITH ANIMATED BORDER)
 // -----------------------------------------------------------------------------
 
 const services = [
   {
-    // Check if the icon component exists before trying to render it.
     icon: MessageCircle ? <MessageCircle className="w-10 h-10 text-purple-400" /> : <PlaceholderIcon />,
     title: 'Social Media Management',
     description: 'We craft engaging content and manage your social channels to build a vibrant community around your brand.',
@@ -50,27 +48,75 @@ export const OurServices = () => {
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
+          <motion.h2 
+            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             Our Core Services
-          </h2>
-          <p className="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">
+          </motion.h2>
+          <motion.p 
+            className="mt-4 text-lg text-gray-400 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
             We provide the tools and expertise to help your business thrive in the digital landscape.
-          </p>
+          </motion.p>
         </div>
 
-        {/* Services Grid */}
+        {/* Services Grid with Animated Border */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
-            <div
+            <motion.div
               key={index}
-              className="bg-gray-800/50 p-8 rounded-2xl border border-gray-700/50 shadow-lg hover:shadow-purple-500/20 transition-all duration-300 ease-in-out transform hover:-translate-y-2"
+              className="relative"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ y: -10 }}
             >
-              <div className="mb-6 inline-block bg-gray-900 p-4 rounded-xl">
-                {service.icon}
+              <motion.div
+                className="absolute inset-0 rounded-2xl"
+                initial={{ opacity: 0 }}
+                whileHover={{
+                  opacity: 1,
+                  background: `linear-gradient(45deg, #8b5cf6, #ec4899, #3b82f6)`,
+                }}
+                transition={{ duration: 0.4 }}
+                style={{ zIndex: -1 }}
+              />
+              
+              <div className="bg-gray-800/50 p-8 rounded-2xl border border-gray-700/50 shadow-lg h-full relative overflow-hidden">
+                {/* Animated Border Effect */}
+                <motion.div
+                  className="absolute inset-0 rounded-2xl"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileHover={{
+                    opacity: 1,
+                    scale: 1,
+                    boxShadow: "0 0 30px rgba(139, 92, 246, 0.5)",
+                  }}
+                  transition={{ duration: 0.4 }}
+                  style={{
+                    zIndex: -1,
+                    background: `linear-gradient(45deg, #8b5cf6, #ec4899, #3b82f6)`,
+                  }}
+                />
+                
+                <div className="relative z-10">
+                  <div className="mb-6 inline-block bg-gray-900 p-4 rounded-xl">
+                    {service.icon}
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">{service.title}</h3>
+                  <p className="text-gray-400">{service.description}</p>
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-              <p className="text-gray-400">{service.description}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -78,9 +124,8 @@ export const OurServices = () => {
   );
 };
 
-
 // -----------------------------------------------------------------------------
-// FREQUENTLY ASKED QUESTIONS (FAQ) COMPONENT
+// FREQUENTLY ASKED QUESTIONS (FAQ) COMPONENT (WITH ENHANCED ANIMATIONS)
 // -----------------------------------------------------------------------------
 
 const faqData = [
@@ -108,35 +153,52 @@ const FaqItem = ({ item, index, isOpen, setIsOpen }) => {
   };
 
   return (
-    <div className="border-b border-gray-700 py-6">
-      <button
+    <motion.div 
+      className="border-b border-gray-700 py-6"
+      layout
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, delay: index * 0.1 }}
+    >
+      <motion.button
         onClick={toggleOpen}
         className="w-full flex justify-between items-center text-left text-lg sm:text-xl font-semibold text-white"
+        whileHover={{ color: '#a78bfa' }}
+        transition={{ duration: 0.2 }}
       >
         <span>{item.question}</span>
-        {/* Check if ChevronDown icon exists, otherwise show a fallback character to prevent crashing */}
         {ChevronDown ? (
-          <ChevronDown
-            className={`w-6 h-6 transform transition-transform duration-300 ${
-              isOpen === index ? 'rotate-180' : ''
-            }`}
-          />
+          <motion.span
+            animate={{ rotate: isOpen === index ? 180 : 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <ChevronDown className="w-6 h-6" />
+          </motion.span>
         ) : (
           <span className="w-6 h-6" title="Icon not loaded. Please run 'npm install lucide-react'">▼</span>
         )}
-      </button>
-      <div
-        className={`grid overflow-hidden transition-all duration-300 ease-in-out ${
-          isOpen === index ? 'grid-rows-[1fr] opacity-100 mt-4' : 'grid-rows-[0fr] opacity-0'
-        }`}
+      </motion.button>
+      
+      <motion.div
+        initial={false}
+        animate={{ 
+          height: isOpen === index ? 'auto' : 0,
+          opacity: isOpen === index ? 1 : 0
+        }}
+        className="overflow-hidden"
+        transition={{ duration: 0.4, ease: 'easeInOut' }}
       >
-        <div className="overflow-hidden">
-          <p className="text-gray-400">
-            {item.answer}
-          </p>
-        </div>
-      </div>
-    </div>
+        <motion.p 
+          className="text-gray-400 pt-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isOpen === index ? 1 : 0 }}
+          transition={{ duration: 0.3, delay: isOpen === index ? 0.2 : 0 }}
+        >
+          {item.answer}
+        </motion.p>
+      </motion.div>
+    </motion.div>
   );
 };
 
@@ -146,14 +208,26 @@ export const FAQ = () => {
   return (
     <section id="faq" className="bg-gray-900 text-white py-20 sm:py-24">
       <div className="container mx-auto px-6 max-w-4xl">
-        {/* Section Header */}
+        {/* Section Header with Animation */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
+          <motion.h2 
+            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             Frequently Asked Questions
-          </h2>
-          <p className="mt-4 text-lg text-gray-400">
+          </motion.h2>
+          <motion.p 
+            className="mt-4 text-lg text-gray-400"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
             Have questions? We&apos;ve got answers.
-          </p>
+          </motion.p>
         </div>
 
         {/* FAQ List */}
@@ -172,21 +246,3 @@ export const FAQ = () => {
     </section>
   );
 };
-
-// HOW TO USE IN YOUR APP:
-//
-// import { Hero } from './sections/Hero';
-// import { OurServices, FAQ } from './sections/MoreSections'; // Assuming you save this file as MoreSections.jsx
-//
-// function App() {
-//   return (
-//     <>
-//       <Hero />
-//       <OurServices />
-//       <FAQ />
-//       {/* ... other components like Footer ... */}
-//     </>
-//   );
-// }
-//
-// export default App;

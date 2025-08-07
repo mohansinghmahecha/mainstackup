@@ -3,7 +3,7 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import { FAQ, OurServices } from "./components/Servicesand";
 import { PricingPlan } from "./components/PricingPlan";
-import { ContactUs } from "./components/ContactUs";
+import LandingPage, { ContactUs } from "./components/ContactUs";
 
 export default function Home() {
   return (
@@ -13,7 +13,7 @@ export default function Home() {
       <OurServices/>
       <PricingPlan/>
       <FAQ/>
-      <ContactUs/>
+      <LandingPage/>
     </div>
   );
 }
