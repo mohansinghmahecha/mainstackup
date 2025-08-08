@@ -22,7 +22,7 @@ const Hero = () => {
                 Build Your Brand
               </span>
               <br />
-              with StackUpStack
+              with stepupstack
             </h1>
             <p className="text-lg md:text-xl text-gray-300 max-w-xl mx-auto md:mx-0 mb-10">
               We offer top-tier services in social media, SEO, and web & mobile development to catapult your business to new heights.

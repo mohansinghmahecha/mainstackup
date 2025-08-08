@@ -34,7 +34,7 @@ const WhatsAppIcon = ({ className }) => (
 
 
 const ContactUs = () => {
-  const myEmail = "info@stackupstack.com";
+  const myEmail = "info@stepupstack.com";
   const myWhatsApp = "+918619842221"; // Your WhatsApp number
   const whatsappLink = `https://wa.me/${myWhatsApp.replace(/\+/g, '')}`;
 
@@ -98,7 +98,7 @@ const Footer = () => (
       <div className="flex flex-col items-center justify-between md:flex-row">
         <div className="mb-8 md:mb-0 text-center md:text-left">
           <a href="#" className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
-            StackUpStack
+            StepUpStack
           </a>
            <p className="text-gray-500 text-sm mt-2">
             Providing the **best digital marketing in Jodhpur**.
@@ -120,7 +120,7 @@ const Footer = () => (
         </div>
       </div>
       <div className="mt-12 pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
-        <p>&copy; {new Date().getFullYear()} StackUpStack. All Rights Reserved.</p>
+        <p>&copy; {new Date().getFullYear()} stepupstack. All Rights Reserved.</p>
       </div>
     </div>
   </footer>

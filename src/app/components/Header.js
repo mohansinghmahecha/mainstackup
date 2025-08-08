@@ -66,7 +66,7 @@ const Header = () => {
                     <div className="flex items-center justify-between h-20">
                         {/* Logo with dynamic color */}
                         <a href="#" className={`text-2xl font-bold transition-colors duration-300 ${logoClass}`}>
-                            StackUpStack
+                            stepupstack
                         </a>
 
                         {/* Desktop Navigation */}
