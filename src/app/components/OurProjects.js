@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
+import Image from 'next/image';
 
 // -----------------------------------------------------------------------------
 // OUR PROJECTS COMPONENT
@@ -40,7 +41,7 @@ export const OurProjects = () => {
                         Our Completed Projects
                     </h2>
                     <p className="mt-4 text-lg text-gray-400 max-w-3xl mx-auto">
-                        We take pride in our work. Here are some of the projects we've successfully delivered to our clients.
+                        We take pride in our work. Here are some of the projects we&apos;ve successfully delivered to our clients.
                     </p>
                 </div>
 
@@ -51,11 +52,15 @@ export const OurProjects = () => {
                             className="group bg-gray-800/50 rounded-2xl border border-gray-700/50 shadow-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-purple-500/20 hover:-translate-y-2"
                         >
                             <div className="relative">
-                                <img 
-                                    src={project.image} 
-                                    alt={project.title} 
+                                <Image
+                                    src={project.image}
+                                    alt={project.title}
+                                    width={500}
+                                    height={500}
+                                      unoptimized
+                                    loading="lazy"
                                     className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
-                                    onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/600x400/2a2a3e/ffffff?text=Image+Not+Found'; }}
+                                    onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/600x400/2a2a3e/ffffff?text=Image+Not+Found'; }}
                                 />
                                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300"></div>
                             </div>

@@ -1,4 +1,15 @@
+// next.config.js
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'placehold.co',
+      },
+    ],
+    dangerouslyAllowSVG: true,
+  },
+};
 
 export default nextConfig;
