@@ -20,6 +20,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        {/* This is the key line for your favicon */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body
