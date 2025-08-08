@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "stack up stack",
+  title: "step up stack",
   description: "we are a digital agency that builds websites and apps",
 };
 

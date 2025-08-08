@@ -57,11 +57,11 @@ const Header = () => {
     // Dynamic class for the logo to change color on scroll
     const logoClass = isScrolled
         ? 'bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500'
-        : 'text-white';
+        : 'bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500';
 
     return (
         <>
-            <header className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-gray-950/80 backdrop-blur-lg border-b border-gray-800' : 'bg-violet-600'}`}>
+            <header className={`sticky top-0 z-50 transition-all duration-300  bg-gray-900 backdrop-blur-lg border-b border-gray-800 `}>
                 <div className="container mx-auto px-6">
                     <div className="flex items-center justify-between h-20">
                         {/* Logo with dynamic color */}
